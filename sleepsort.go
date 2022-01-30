@@ -7,6 +7,7 @@ import (
 	"sync"
 	"time"
 )
+
 var size int
 var wg sync.WaitGroup
 
@@ -18,14 +19,14 @@ func sleepsort(n int) int {
 
 func printer(in <-chan int) {
 	for i := 0; i < size; i++ {
-		fmt.Print(<-in," ")
+		fmt.Print(<-in, " ")
 	}
 }
 
 type Chan chan int
 
 func main() {
-	size, _  = strconv.Atoi(os.Args[1])
+	size, _ = strconv.Atoi(os.Args[1])
 	c := make(Chan, size)
 
 	for _, n := range os.Args[2:] {
